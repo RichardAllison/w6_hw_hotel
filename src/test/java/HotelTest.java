@@ -16,6 +16,7 @@ public class HotelTest {
     ArrayList<Bedroom> bedrooms;
     ArrayList<ConferenceRoom> conferenceRooms;
     ArrayList<DiningRoom> diningRooms;
+    Guest guest;
 
     @Before
     public void before() {
@@ -27,20 +28,35 @@ public class HotelTest {
         diningRoom = new DiningRoom(10, "Dining Room");
         diningRooms = new ArrayList<>(Arrays.asList(diningRoom));
         hotel = new Hotel(bedrooms, conferenceRooms, diningRooms);
+        guest = new Guest("Richard", 2);
     }
 
     @Test
-    public void hotelHasBedrooms() {
+    public void hasBedrooms() {
         assertEquals(1, hotel.countBedrooms());
     }
 
     @Test
-    public void hotelHasConferenceRooms() {
+    public void hasConferenceRooms() {
         assertEquals(2, hotel.countConferenceRooms());
     }
 
     @Test
-    public void hotelHasDiningRoom() {
+    public void hasDiningRooms() {
         assertEquals(1, hotel.countDiningRooms());
+    }
+
+    @Test
+    public void canCheckInGuests() {
+        hotel.checkInGuest(guest);
+        assertEquals(1, hotel.countGuests());
+    }
+
+    @Test
+    public void canCheckOutGuests() {
+        hotel.checkInGuest(guest);
+        assertEquals(1, hotel.countGuests());
+        hotel.checkOutGuest(guest);
+        assertEquals(0, hotel.countGuests());
     }
 }

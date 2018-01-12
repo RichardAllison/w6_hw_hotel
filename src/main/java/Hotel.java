@@ -8,6 +8,7 @@ public class Hotel {
     private ArrayList<DiningRoom> diningRooms;
 
     public Hotel(ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms, ArrayList<DiningRoom> diningRooms) {
+        this.guests = new ArrayList<>();
         this.bedrooms = bedrooms;
         this.conferenceRooms = conferenceRooms;
         this.diningRooms = diningRooms;
@@ -36,4 +37,12 @@ public class Hotel {
     public int countDiningRooms() {
         return diningRooms.size();
     }
+
+    public int countGuests() {
+        return guests.size();
+    }
+
+//    public double billGuest(Guest guest) {
+//        guest.getNights() * ;
+//    }
 }

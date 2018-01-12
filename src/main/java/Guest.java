@@ -8,4 +8,8 @@ public class Guest {
         this.nights = nights;
     }
 
+    public int getNights() {
+        return nights;
+    }
+
 }
