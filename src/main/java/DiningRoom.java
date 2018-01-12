@@ -2,14 +2,12 @@ import java.util.ArrayList;
 
 public class DiningRoom extends Room {
 
-    int roomNumber;
-    double charge;
+    String roomName;
     ArrayList<Guest> guests;
 
-    public DiningRoom(int capacity, int roomNumber, double charge) {
+    public DiningRoom(int capacity, String roomName) {
         super(capacity);
         guests = new ArrayList<>();
-        this.roomNumber = roomNumber;
-        this.charge = charge;
+        this.roomName = roomName;
     }
 }

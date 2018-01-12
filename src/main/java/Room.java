@@ -14,13 +14,18 @@ public class Room {
         return capacity;
     }
 
-    public void addGuest(Guest guest) {
-        this.guests.add(guest);
-    }
 
     public int guestCount() {
         return this.guests.size();
     }
 
+    public boolean capacityMet() {
+        return (this.capacity == this.guestCount());
+    }
 
+    public void addGuest(Guest guest) {
+        if (!capacityMet()) {
+            this.guests.add(guest);
+        }
+    }
 }

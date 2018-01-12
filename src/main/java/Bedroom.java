@@ -22,4 +22,6 @@ public class Bedroom extends Room {
     public double getCharge() {
         return charge;
     }
+
+
 }
