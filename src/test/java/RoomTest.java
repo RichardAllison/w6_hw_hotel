@@ -6,10 +6,12 @@ import static org.junit.Assert.assertEquals;
 public class RoomTest {
 
     Room room;
+    Guest guest;
 
     @Before
     public void before() {
-        room = new Room(5, 1, 10);
+        room = new Room(5);
+        guest = new Guest();
     }
 
     @Test
@@ -18,13 +20,10 @@ public class RoomTest {
     }
 
     @Test
-    public void hasRoomNumber() {
-        assertEquals(1, room.getRoomNumber());
-    }
-
-    @Test
-    public void hasCharge() {
-        assertEquals(10, room.getCharge(), 0.00);
+    public void canAddGuest() {
+        assertEquals(0, room.guestCount());
+        room.addGuest(guest);
+        assertEquals(1, room.guestCount());
     }
 
 }

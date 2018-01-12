@@ -1,18 +1,20 @@
 public enum BedroomType {
-    SINGLE,
-    DOUBLE,
-    TWIN,
-    FAMILY;
+    SINGLE(1),
+    DOUBLE(2),
+    TWIN(2),
+    TRIPLE(3),
+    QUAD(4),
+    FAMILY(5);
 
-//    private final int value;
+    private final int capacity;
 
-//    BedroomType(int value) {
-//        this.value = value;
-//    }
+    BedroomType(int capacity) {
+        this.capacity = capacity;
+    }
 
-//    public int getValue() {
-//        return this.value;
-//    }
+    public int getCapacity() {
+        return this.capacity;
+    }
 
 }
 
