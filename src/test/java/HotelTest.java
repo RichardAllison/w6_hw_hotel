@@ -14,27 +14,25 @@ public class HotelTest {
     Bedroom bedroom;
     Bedroom bedroom2;
     Bedroom bedroom3;
-    DiningRoom diningRoom;
     ConferenceRoom conferenceRoom1;
     ConferenceRoom conferenceRoom2;
+    DiningRoom diningRoom;
     ArrayList<Room> rooms;
-//    ArrayList<ConferenceRoom> conferenceRooms;
-//    ArrayList<DiningRoom> diningRooms;
     Guest guest;
+    Guest guest2;
 
     @Before
     public void before() {
         bedroom = new Bedroom(1, BedroomType.DOUBLE);
         bedroom2 = new Bedroom(2, BedroomType.SINGLE);
         bedroom3 = new Bedroom(330, BedroomType.DOUBLE);
-        diningRoom = new DiningRoom(10, "Dining Room");
         conferenceRoom1 = new ConferenceRoom(10, "Conference Room", 50);
         conferenceRoom2 = new ConferenceRoom(5, "Small Room", 20);
-        rooms = new ArrayList<>(Arrays.asList(bedroom, diningRoom, conferenceRoom1, conferenceRoom2));
-//        conferenceRooms = new ArrayList<>(Arrays.asList(conferenceRoom1, conferenceRoom2));
-//        diningRooms = new ArrayList<>(Arrays.asList(diningRoom));
+        diningRoom = new DiningRoom(10, "Dining Room");
+        rooms = new ArrayList<>(Arrays.asList(bedroom, bedroom2, bedroom3, conferenceRoom1, conferenceRoom2, diningRoom));
         hotel = new Hotel(rooms);
-        guest = new Guest("Richard");
+        guest = new Guest("John");
+        guest2 = new Guest("Elizabeth");
     }
 
     @Test
@@ -42,21 +40,12 @@ public class HotelTest {
         assertEquals(4, hotel.countRooms());
     }
 
-//    @Test
-//    public void hasConferenceRooms() {
-//        assertEquals(2, hotel.countConferenceRooms());
-//    }
-//
-//    @Test
-//    public void hasDiningRooms() {
-//        assertEquals(1, hotel.countDiningRooms());
-//    }
-
     @Test
     public void canCheckInGuestToRoom() {
         assertTrue(hotel.checkRoomEmpty(bedroom));
         hotel.checkInGuest(bedroom, guest);
-        assertEquals(1, bedroom.countGuests());
+        hotel.checkInGuest(bedroom, guest2);
+        assertEquals(2, bedroom.countGuests());
     }
 
     @Test
@@ -70,7 +59,18 @@ public class HotelTest {
     @Test
     public void canCheckRoomForGuests() {
         hotel.checkInGuest(bedroom, guest);
+        hotel.checkInGuest(bedroom, guest2);
         assertFalse(hotel.checkRoomEmpty(bedroom));
-        assertEquals(guest, hotel.checkWhichGuestsInRoom(bedroom).get(0));
+        assertEquals(guest, hotel.findGuestsInRoom(bedroom).get(0));
+        assertEquals(guest2, hotel.findGuestsInRoom(bedroom).get(1));
     }
+
+    @Test
+    public void canFindEmptyRooms() {
+        hotel.checkInGuest(bedroom3, guest);
+        assertEquals(bedroom, hotel.findEmptyRooms().get(0));
+        assertEquals(bedroom2, hotel.findEmptyRooms().get(1));
+        assertEquals(conferenceRoom1, hotel.findEmptyRooms().get(2));
+    }
+
 }
