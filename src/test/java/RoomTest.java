@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class RoomTest {
@@ -21,8 +22,15 @@ public class RoomTest {
     }
 
     @Test
+    public void canAddBooking() {
+        room.addBooking(2);
+        assertEquals(2, room.getDaysBooked());
+    }
+
+    @Test
     public void canAddGuest() {
         assertEquals(0, room.countGuests());
+        room.addBooking(1);
         room.addGuest(guest);
         assertEquals(1, room.countGuests());
     }
@@ -30,6 +38,7 @@ public class RoomTest {
     @Test
     public void hasGuests() {
         assertEquals(0, room.countGuests());
+        room.addBooking(1);
         room.addGuest(guest);
         assertEquals(guest, room.getGuests().get(0));
     }
@@ -37,6 +46,7 @@ public class RoomTest {
     @Test
     public void testCapacityMet() {
         room = new Room(1);
+        room.addBooking(1);
         room.addGuest(guest);
         assertTrue(room.capacityMet());
     }
@@ -44,9 +54,15 @@ public class RoomTest {
     @Test
     public void cannotAddMoreThanCapacity() {
         room = new Room(1);
+        room.addBooking(1);
         room.addGuest(guest);
         room.addGuest(guest);
         assertEquals(1, room.countGuests());
+    }
+
+    @Test
+    public void getBooking() {
+        assertFalse(room.checkBooked());
     }
 
 }

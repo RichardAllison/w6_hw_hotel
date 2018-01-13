@@ -23,6 +23,7 @@ public class ConferenceRoomTest {
     @Test
     public void canAddGuest() {
         assertEquals(0, conferenceRoom.countGuests());
+        conferenceRoom.addBooking(1);
         conferenceRoom.addGuest(guest);
         assertEquals(1, conferenceRoom.countGuests());
     }
@@ -30,6 +31,7 @@ public class ConferenceRoomTest {
     @Test
     public void testCapacityMet() {
         conferenceRoom = new ConferenceRoom(1, "Ridiculously Small Conference Room", 10);
+        conferenceRoom.addBooking(1);
         conferenceRoom.addGuest(guest);
         assertTrue(conferenceRoom.capacityMet());
     }
@@ -37,6 +39,7 @@ public class ConferenceRoomTest {
     @Test
     public void cannotAddMoreThanCapacity() {
         conferenceRoom = new ConferenceRoom(1, "Ridiculously Small Conference Room", 10);
+        conferenceRoom.addBooking(1);
         conferenceRoom.addGuest(guest);
         conferenceRoom.addGuest(guest);
         assertEquals(1, conferenceRoom.countGuests());

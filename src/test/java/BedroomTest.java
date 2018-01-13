@@ -35,16 +35,17 @@ public class BedroomTest {
 
     @Test
     public void testCapacityMet() {
+        singleBedroom.addBooking(1);
         singleBedroom.addGuest(guest);
         assertTrue(singleBedroom.capacityMet());
     }
 
     @Test
     public void cannotAddMoreThanCapacity() {
+        singleBedroom.addBooking(1);
         singleBedroom.addGuest(guest);
         singleBedroom.addGuest(guest);
         assertEquals(1, singleBedroom.countGuests());
     }
-
 
 }

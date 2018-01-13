@@ -37,12 +37,13 @@ public class HotelTest {
 
     @Test
     public void hasRooms() {
-        assertEquals(4, hotel.countRooms());
+        assertEquals(6, hotel.countRooms());
     }
 
     @Test
     public void canCheckInGuestToRoom() {
-        assertTrue(hotel.checkRoomEmpty(bedroom));
+        assertTrue(bedroom.checkRoomEmpty());
+        bedroom.addBooking(1);
         hotel.checkInGuest(bedroom, guest);
         hotel.checkInGuest(bedroom, guest2);
         assertEquals(2, bedroom.countGuests());
@@ -50,6 +51,7 @@ public class HotelTest {
 
     @Test
     public void canCheckOutGuests() {
+        bedroom.addBooking(1);
         hotel.checkInGuest(bedroom, guest);
         assertEquals(1, bedroom.countGuests());
         hotel.checkOutGuest(bedroom, guest);
@@ -58,15 +60,17 @@ public class HotelTest {
 
     @Test
     public void canCheckRoomForGuests() {
+        bedroom.addBooking(1);
         hotel.checkInGuest(bedroom, guest);
         hotel.checkInGuest(bedroom, guest2);
-        assertFalse(hotel.checkRoomEmpty(bedroom));
+        assertFalse(bedroom.checkRoomEmpty());
         assertEquals(guest, hotel.findGuestsInRoom(bedroom).get(0));
         assertEquals(guest2, hotel.findGuestsInRoom(bedroom).get(1));
     }
 
     @Test
     public void canFindEmptyRooms() {
+        bedroom3.addBooking(1);
         hotel.checkInGuest(bedroom3, guest);
         assertEquals(bedroom, hotel.findEmptyRooms().get(0));
         assertEquals(bedroom2, hotel.findEmptyRooms().get(1));

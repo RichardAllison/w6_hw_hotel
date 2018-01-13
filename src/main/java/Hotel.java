@@ -9,26 +9,31 @@ public class Hotel {
         this.rooms = rooms;
     }
 
-    public void checkInGuest(Bedroom bedroom, Guest guest) {
-        bedroom.addGuest(guest);
+    public void createRoomBooking(Room room, int days) {
+
     }
 
-    public void checkOutGuest(Bedroom bedroom, Guest guest) {
-        bedroom.removeGuest(guest);
-    }
-
-    public boolean checkRoomEmpty(Room room) {
-        if (room.getGuests().isEmpty()) {
-            return true;
-        } else {
-            return false;
+    public void checkInGuest(Room room, Guest guest) {
+        if (room.checkBooked()) {
+            room.addGuest(guest);
         }
     }
+
+    public void checkOutGuest(Room room, Guest guest) {
+        room.removeGuest(guest);
+        if (room.checkRoomEmpty()) {
+            room.removeBooking();
+        }
+    }
+
+//    public boolean checkRoomEmpty(Room room) {
+//       return room.checkRoomEmpty();
+//    }
 
     public ArrayList<Guest> findGuestsInRoom(Room room) {
 
         ArrayList<Guest> guestsInRoom = new ArrayList<>();
-        if (!checkRoomEmpty(room)) {
+        if (!room.checkRoomEmpty()) {
             for (Guest guest : room.getGuests()) {
                 guestsInRoom.add(guest);
             }
@@ -39,7 +44,7 @@ public class Hotel {
     public ArrayList<Room> findEmptyRooms() {
         ArrayList<Room> emptyRooms = new ArrayList<>();
         for (Room room : rooms) {
-            if (checkRoomEmpty(room)){
+            if (room.checkRoomEmpty()){
                 emptyRooms.add(room);
             }
         }
@@ -49,5 +54,9 @@ public class Hotel {
     public int countRooms() {
         return rooms.size();
     }
+
+//    public double guestBill() {
+//
+//    }
 
 }
