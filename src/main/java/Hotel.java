@@ -2,47 +2,40 @@ import java.util.ArrayList;
 
 public class Hotel {
 
-    private ArrayList<Guest> guests;
-    private ArrayList<Bedroom> bedrooms;
-    private ArrayList<ConferenceRoom> conferenceRooms;
-    private ArrayList<DiningRoom> diningRooms;
+    private ArrayList<Room> rooms;
+//    private ArrayList<ConferenceRoom> conferenceRooms;
+//    private ArrayList<DiningRoom> diningRooms;
 
-    public Hotel(ArrayList<Bedroom> bedrooms, ArrayList<ConferenceRoom> conferenceRooms, ArrayList<DiningRoom> diningRooms) {
-        this.guests = new ArrayList<>();
-        this.bedrooms = bedrooms;
-        this.conferenceRooms = conferenceRooms;
-        this.diningRooms = diningRooms;
+    public Hotel(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+//        this.conferenceRooms = conferenceRooms;
+//        this.diningRooms = diningRooms;
     }
 
-    public void checkInGuest(Guest guest) {
-        guests.add(guest);
+    public void checkInGuest(Bedroom bedroom, Guest guest) {
+        bedroom.addGuest(guest);
     }
 
-    public void checkOutGuest(Guest guest) {
-        guests.remove(guest);
+    public void checkOutGuest(Bedroom bedroom, Guest guest) {
+        bedroom.removeGuest(guest);
     }
 
-    public int guestCount() {
-        return guests.size();
+
+    public int countRooms() {
+        return rooms.size();
     }
 
-    public int countBedrooms() {
-        return bedrooms.size();
+    public ArrayList<Room> findEmptyRooms() {
+        ArrayList<Room> emptyRooms = new ArrayList<>();
+        return emptyRooms;
     }
 
-    public int countConferenceRooms() {
-        return conferenceRooms.size();
-    }
-
-    public int countDiningRooms() {
-        return diningRooms.size();
-    }
-
-    public int countGuests() {
-        return guests.size();
-    }
-
-//    public double billGuest(Guest guest) {
-//        guest.getNights() * ;
+//    public int countConferenceRooms() {
+//        return conferenceRooms.size();
 //    }
+//
+//    public int countDiningRooms() {
+//        return diningRooms.size();
+//    }
+
 }

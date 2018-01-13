@@ -12,7 +12,7 @@ public class RoomTest {
     @Before
     public void before() {
         room = new Room(5);
-        guest = new Guest("Richard", 2);
+        guest = new Guest("Richard");
     }
 
     @Test

@@ -13,9 +13,9 @@ public class BedroomTest {
 
     @Before
     public void before() {
-        bedroom = new Bedroom(1, 10, BedroomType.TWIN);
-        singleBedroom = new Bedroom(1, 10, BedroomType.SINGLE);
-        guest = new Guest("Richard", 2);
+        bedroom = new Bedroom(1, BedroomType.TWIN);
+        singleBedroom = new Bedroom(1, BedroomType.SINGLE);
+        guest = new Guest("Richard");
     }
 
     @Test
@@ -30,7 +30,7 @@ public class BedroomTest {
 
     @Test
     public void hasCharge() {
-        assertEquals(10, bedroom.getCharge(), 0.00);
+        assertEquals(20, bedroom.getCharge(), 0.00);
     }
 
     @Test

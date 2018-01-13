@@ -4,11 +4,11 @@ public class Bedroom extends Room {
     int roomNumber;
     double charge;
 
-    public Bedroom(int roomNumber, double charge, BedroomType type) {
+    public Bedroom(int roomNumber, BedroomType type) {
         super(type.getCapacity());
-        this.roomNumber = roomNumber;
-        this.charge = charge;
         this.type = type;
+        this.roomNumber = roomNumber;
+        this.charge = type.getCharge();
     }
 
     public int getRoomCapacity() {
@@ -22,6 +22,5 @@ public class Bedroom extends Room {
     public double getCharge() {
         return charge;
     }
-
 
 }

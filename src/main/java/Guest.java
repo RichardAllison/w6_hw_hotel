@@ -1,15 +1,12 @@
 public class Guest {
 
     private String name;
-    private int nights;
 
-    public Guest(String name, int nights){
+    public Guest(String name){
         this.name = name;
-        this.nights = nights;
     }
 
-    public int getNights() {
-        return nights;
+    public String getName() {
+        return name;
     }
-
 }
