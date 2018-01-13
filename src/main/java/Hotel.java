@@ -20,6 +20,31 @@ public class Hotel {
         bedroom.removeGuest(guest);
     }
 
+    public boolean checkRoomEmpty(Room room) {
+        if (room.getGuests().isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public ArrayList<Guest> checkWhichGuestsInRoom(Room room) {
+        if (!checkRoomEmpty(room)) {
+        return room.getGuests();
+        } else {
+            return null;
+        }
+    }
+
+    public ArrayList<Room> emptyRooms() {
+        ArrayList<Room> emptyRooms = new ArrayList<>();
+        for (Room room : rooms){
+            if (checkRoomEmpty(room)){
+                emptyRooms.add(room);
+            }
+            return emptyRooms;
+        }
+    }
 
     public int countRooms() {
         return rooms.size();

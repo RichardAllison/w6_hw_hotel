@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class HotelTest {
 
@@ -50,17 +52,25 @@ public class HotelTest {
 //        assertEquals(1, hotel.countDiningRooms());
 //    }
 
-//    @Test
-//    public void canCheckInGuestToRoom() {
-//        hotel.checkInGuest(guest, bedroom);
-//        assertEquals(1, hotel.countGuests());
-//    }
-//
-//    @Test
-//    public void canCheckOutGuests() {
-//        hotel.checkInGuest(guest);
-//        assertEquals(1, hotel.countGuests());
-//        hotel.checkOutGuest(guest);
-//        assertEquals(0, hotel.countGuests());
-//    }
+    @Test
+    public void canCheckInGuestToRoom() {
+        assertTrue(hotel.checkRoomEmpty(bedroom));
+        hotel.checkInGuest(bedroom, guest);
+        assertEquals(1, bedroom.countGuests());
+    }
+
+    @Test
+    public void canCheckOutGuests() {
+        hotel.checkInGuest(bedroom, guest);
+        assertEquals(1, bedroom.countGuests());
+        hotel.checkOutGuest(bedroom, guest);
+        assertEquals(0, bedroom.countGuests());
+    }
+
+    @Test
+    public void canCheckRoomForGuests() {
+        hotel.checkInGuest(bedroom, guest);
+        assertFalse(hotel.checkRoomEmpty(bedroom));
+        assertEquals(guest, hotel.checkWhichGuestsInRoom(bedroom).get(0));
+    }
 }

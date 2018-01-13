@@ -43,7 +43,7 @@ public class BedroomTest {
     public void cannotAddMoreThanCapacity() {
         singleBedroom.addGuest(guest);
         singleBedroom.addGuest(guest);
-        assertEquals(1, singleBedroom.guestCount());
+        assertEquals(1, singleBedroom.countGuests());
     }
 
 

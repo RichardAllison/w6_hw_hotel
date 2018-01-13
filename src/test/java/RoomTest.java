@@ -22,9 +22,16 @@ public class RoomTest {
 
     @Test
     public void canAddGuest() {
-        assertEquals(0, room.guestCount());
+        assertEquals(0, room.countGuests());
         room.addGuest(guest);
-        assertEquals(1, room.guestCount());
+        assertEquals(1, room.countGuests());
+    }
+
+    @Test
+    public void hasGuests() {
+        assertEquals(0, room.countGuests());
+        room.addGuest(guest);
+        assertEquals(guest, room.getGuests().get(0));
     }
 
     @Test
@@ -39,7 +46,7 @@ public class RoomTest {
         room = new Room(1);
         room.addGuest(guest);
         room.addGuest(guest);
-        assertEquals(1, room.guestCount());
+        assertEquals(1, room.countGuests());
     }
 
 }

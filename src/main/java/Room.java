@@ -15,12 +15,12 @@ public class Room {
     }
 
 
-    public int guestCount() {
+    public int countGuests() {
         return this.guests.size();
     }
 
     public boolean capacityMet() {
-        return (this.capacity == this.guestCount());
+        return (this.capacity == this.countGuests());
     }
 
     public void addGuest(Guest guest) {
@@ -31,5 +31,9 @@ public class Room {
 
     public void removeGuest(Guest guest) {
         this.guests.remove(guest);
+    }
+
+    public ArrayList<Guest> getGuests() {
+        return guests;
     }
 }
