@@ -48,4 +48,11 @@ public class BedroomTest {
         assertEquals(1, singleBedroom.countGuests());
     }
 
+    @Test
+    public void getGuestBill() {
+        bedroom.addBooking(2);
+        bedroom.addGuest(guest);
+        System.out.println(bedroom.guestBill());
+    }
+
 }

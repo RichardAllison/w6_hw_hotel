@@ -23,4 +23,8 @@ public class Bedroom extends Room {
         return charge;
     }
 
+    public double guestBill() {
+        return getDaysBooked() * getCharge() * countGuests();
+    }
+
 }

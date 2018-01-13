@@ -55,8 +55,4 @@ public class Hotel {
         return rooms.size();
     }
 
-//    public double guestBill() {
-//
-//    }
-
 }
