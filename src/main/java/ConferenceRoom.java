@@ -1,11 +1,9 @@
-public class ConferenceRoom extends Room {
+public class ConferenceRoom extends BookableRoom {
 
     String roomName;
-    double charge;
 
     public ConferenceRoom(int capacity, String roomName, double charge) {
-        super(capacity);
+        super(capacity, charge);
         this.roomName = roomName;
-        this.charge = charge;
     }
 }

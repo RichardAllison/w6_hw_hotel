@@ -1,14 +1,13 @@
-public class Bedroom extends Room {
+public class Bedroom extends BookableRoom {
 
     private BedroomType type;
     int roomNumber;
-    double charge;
+
 
     public Bedroom(int roomNumber, BedroomType type) {
-        super(type.getCapacity());
+        super(type.getCapacity(), type.getCharge());
         this.type = type;
         this.roomNumber = roomNumber;
-        this.charge = type.getCharge();
     }
 
     public int getRoomCapacity() {
@@ -17,14 +16,6 @@ public class Bedroom extends Room {
 
     public int getRoomNumber() {
         return roomNumber;
-    }
-
-    public double getCharge() {
-        return charge;
-    }
-
-    public double guestBill() {
-        return getDaysBooked() * getCharge() * countGuests();
     }
 
 }

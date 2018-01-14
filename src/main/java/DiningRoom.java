@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class DiningRoom extends Room {
 
     String roomName;

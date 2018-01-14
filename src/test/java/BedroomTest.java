@@ -52,7 +52,7 @@ public class BedroomTest {
     public void getGuestBill() {
         bedroom.addBooking(2);
         bedroom.addGuest(guest);
-        System.out.println(bedroom.guestBill());
+        assertEquals(40, bedroom.guestBill(), 0.01);
     }
 
 }
